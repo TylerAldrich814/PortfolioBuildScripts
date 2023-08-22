@@ -1,0 +1,11 @@
+## This YAML File contains the needed variables in order to conigure and upload your portfolio
+#  files to the cloud.
+
+Project:
+  Name: "Portfolio"
+  RootDirectory: "../"
+  SourceDirectory: "src/"
+  IgnoreFiles: ["firebase_cred.js"]
+  FirebaseCredentials: "aldrich-dev-portfolio-firebase-adminsdk-nxd05-df72616d13.json"
+  BucketPath: "aldrich-dev-portfolio.appspot.com"
+  Extensions: [".js", ".jsx", ".ts", ".css", ".scss"]
