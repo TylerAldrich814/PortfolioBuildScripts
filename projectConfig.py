@@ -12,6 +12,7 @@ class ProjectConfig:
         self.CompleteSrcDir = self.RootDir + self.SourceDir # ??
         self.IgnoreFiles = project['IgnoreFiles']
         self.FirebaseCred = project['FirebaseCredentials']
+        self.CredentialsPath = project['CredentialsPath']
         self.BucketPath = project['BucketPath']
         self.Extensions = project['Extensions']
 

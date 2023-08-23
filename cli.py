@@ -20,7 +20,7 @@ if __name__ == "__main__":
         settingsPath = filePath + "/projectSettings.yaml"
         config = ProjectConfig(settingsPath)
 
-        credPath = filePath + "/../credentials/" + config.FirebaseCred
+        credPath = filePath + config.CredentialsPath + config.FirebaseCred
         bucket = FirebaseBucket(credPath, config.BucketPath)
 
         print(f" settingsPath = {settingsPath}")
