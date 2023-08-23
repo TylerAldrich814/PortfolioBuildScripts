@@ -7,36 +7,31 @@ def BuildAndUploadDirectoryTree(config, bucket):
 
         for root, _, files in os.walk(startpath):
             current = structure
-            root_parts = root.replace(startpath, '').split(os.sep)[1:]
-            parent = structure
+            root_parts = root.replace(startpath, '').strip(os.sep).split(os.sep)
+            filtered_files = [file for file in files if any(file.endswith(ext) for ext in config.Extensions)]
 
-            for part in root_parts[:-1]:
-                parent = parent.setdefault(part, {})
+            if not filtered_files:
+                continue
 
-            last_part = root_parts[-1] if root_parts else None
+            # Handles if there's fiels in the root directory.
+            if root == startpath:
+                current["files"] = filtered_files
+                continue
 
             for part in root_parts:
                 current = current.setdefault(part, {})
 
-            current["files"] = [file for file in files if any(file.endswith(ext) for ext in config.Extensions)]
+            current["files"] = filtered_files
 
-            if not current["files"]:
-                if last_part:
-                    parent.pop(last_part, None)
-                else:
-                    structure.clear()
-
-        extraction =  {config.RootDir[2:]: structure}
+        extraction =  {config.SourceDir[:-1]: structure}
         return json.dumps(extraction, indent=2)
 
-    sourDir = config.RootDir + config.SourceDir
-    print(sourDir)
+    sourceDir = config.RootDir + config.SourceDir
+    print(f" -> SourceDirectory => {sourceDir}")
     fileStructure = extractProjectStructure(config.CompleteSrcDir)
-
     storage_path = f"portfolio/{config.Name.lower()}/structure/directories.json"
 
     blob = bucket.blob(storage_path)
     blob.upload_from_string(fileStructure)
     bucket.generate_signed_url(blob)
-
 
