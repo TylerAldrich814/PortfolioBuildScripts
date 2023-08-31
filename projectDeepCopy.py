@@ -6,25 +6,19 @@ def CopySourceToBucket(config, bucket):
 
     settingsPath  = os.path.dirname(os.path.abspath(__file__))
 
-    print(" ----> " + settingsPath + "/../" + config.SourceDir)
-
     for root, _, files in os.walk(settingsPath + "/../" + config.SourceDir):
-        print(f"  --> root: {root} files: {files}")
+
         for file in files:
             _, ext = os.path.splitext(file)
+
+            # Ignore all Ignored Extensions
             if ext not in config.Extensions:
-                # print(f" -> File '${file}' Ignrored.")
                 continue;
 
             local_file_path = os.path.join(root, file)
-            blob_path = os.path.join(
-                storage_path,
-                os.path.relpath(
-                    local_file_path,
-                    config.SourceDir
-                )
-            )
+            childPath = local_file_path.split(config.SourceDir)[1]
+            blob_path = storage_path + childPath
 
             blob = bucket.blob(blob_path)
             blob.upload_from_filename(local_file_path)
-            print(f'{local_file_path} uplodated to {blob_path}')
+            print(f" --> {blob_path} has been uploaded to Firebase Storage")

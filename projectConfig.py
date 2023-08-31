@@ -18,13 +18,14 @@ class ProjectConfig:
 
 
     def test(self):
-        print(f"----------Name - {self.Name}")
-        print(f"-------RootDir - {self.RootDir}")
-        print(f"-----SourceDir - {self.SourceDir}")
-        print(f"---IgnoreFiles - {self.IgnoreFiles}")
-        print(f"--FirebaseCred - {self.FirebaseCred}")
-        print(f"----BucketPath - {self.BucketPath}")
-        print(f"----Extensions - {self.Extensions}")
+        print(f"-------------Name - {self.Name}")
+        print(f"----------RootDir - {self.RootDir}")
+        print(f"--------SourceDir - {self.SourceDir}")
+        print(f"------IgnoreFiles - {self.IgnoreFiles}")
+        print(f"-----FirebaseCred - {self.FirebaseCred}")
+        print(f"--CredentialsPath - {self.CredentialsPath}")
+        print(f"-------BucketPath - {self.BucketPath}")
+        print(f"-------Extensions - {self.Extensions}")
 
 
 if __name__ == "__main__":

@@ -34,4 +34,3 @@ def BuildAndUploadDirectoryTree(config, bucket):
     blob = bucket.blob(storage_path)
     blob.upload_from_string(fileStructure)
     bucket.generate_signed_url(blob)
-
