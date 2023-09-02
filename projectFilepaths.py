@@ -29,7 +29,7 @@ def BuildAndUploadDirectoryTree(config, bucket):
     sourceDir = config.RootDir + config.SourceDir
     print(f" -> SourceDirectory => {sourceDir}")
     fileStructure = extractProjectStructure(config.CompleteSrcDir)
-    storage_path = f"portfolio/{config.Name.lower()}/structure/directories.json"
+    storage_path = f"{config.BucketName}/{config.Name.lower()}/structure/directories.json"
 
     blob = bucket.blob(storage_path)
     blob.upload_from_string(fileStructure)

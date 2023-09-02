@@ -5,9 +5,11 @@ Project:
   Name: "*PROJECTNAME*"
   RootDirectory: "../"
   SourceDirectory: "*SRC/"
-  IgnoreFiles: ["*FILES_TO_IGNORE"]
+  IgnoreFiles: ["*FILES_TO_IGNORE"] # Ignore files that contain approved Extensions
+  IgnoreDirs: ["*DIRS_TO_IGNORE*"]  # Ignore entire directories, even if they contain approved extenstions
   FirebaseCredentials: "/*FIREBASE_CREDENTIALs_JSON*"
   CredentialsPath: "/../*CREDENTIALS_DIRECTORY*"
+  BucketName: "*FIREBASE_STROAGE_BUCKET_NAME"
   BucketPath: "*FIREBASE_STORAGE_BUCKET_NAME*"
   Extensions: ["*FILES_YOU_WANT_TO_DEEP_COPY",.js", ".jsx", ".ts", ".css", ".scss"]
 

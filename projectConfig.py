@@ -11,8 +11,10 @@ class ProjectConfig:
         self.SourceDir = project['SourceDirectory']
         self.CompleteSrcDir = self.RootDir + self.SourceDir # ??
         self.IgnoreFiles = project['IgnoreFiles']
+        self.IgnoreDirs  = project['IgnoreDirs']
         self.FirebaseCred = project['FirebaseCredentials']
         self.CredentialsPath = project['CredentialsPath']
+        self.BucketName = project['BucketName']
         self.BucketPath = project['BucketPath']
         self.Extensions = project['Extensions']
 
@@ -22,8 +24,10 @@ class ProjectConfig:
         print(f"----------RootDir - {self.RootDir}")
         print(f"--------SourceDir - {self.SourceDir}")
         print(f"------IgnoreFiles - {self.IgnoreFiles}")
+        print(f"-------IgnoreDirs - {self.IgnoreDirs}")
         print(f"-----FirebaseCred - {self.FirebaseCred}")
         print(f"--CredentialsPath - {self.CredentialsPath}")
+        print(f"-------BucketName - {self.BucketName}")
         print(f"-------BucketPath - {self.BucketPath}")
         print(f"-------Extensions - {self.Extensions}")
 
