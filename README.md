@@ -1,5 +1,17 @@
-## Python Scripts for getting my Projects Ready for showcasing them on my portfolio
+# A Python CLI tool for Deep copying your Specified Project Files onto Firebase
+
 #### This project needs to be at the Root of your project in order for them to work( or just edit the python scripts where needed to fit your needs )
+```
+YourProjectsRoot/
+├── PortfolioBuildScripts/
+├── SrcToBeDeepCopies/
+│   ├── main.go
+│   └── etc/
+│   └── etc.go
+├── RootFile.go
+├── RootFile.go
+├── RootFile.go
+```
 #### Requires a Firebase security key in Direcotry /Credentials( or change to where ever you'd like it to be stored.. )
 
 
