@@ -1,15 +1,39 @@
 ## This YAML File contains the needed variables in order to conigure and upload your portfolio
 #  files to the cloud.
 
-Project:
-  Name: "*PROJECTNAME*"
-  RootDirectory: "../"
-  SourceDirectory: "*SRC/"
-  IgnoreFiles: ["*FILES_TO_IGNORE"] # Ignore files that contain approved Extensions
-  IgnoreDirs: ["*DIRS_TO_IGNORE*"]  # Ignore entire directories, even if they contain approved extenstions
-  FirebaseCredentials: "/*FIREBASE_CREDENTIALs_JSON*"
-  CredentialsPath: "/../*CREDENTIALS_DIRECTORY*"
-  BucketName: "*FIREBASE_STROAGE_BUCKET_NAME"
-  BucketPath: "*FIREBASE_STORAGE_BUCKET_NAME*"
-  Extensions: ["*FILES_YOU_WANT_TO_DEEP_COPY",.js", ".jsx", ".ts", ".css", ".scss"]
+## There are two methods of using this.
+# A.) Supply a list of 'IgnoredFiles', and leave 'AcceptedFiles' blank.
+#     - Will upload ALL files that aren't in 'IgnoreFiles' and have an
+#       authorized 'Extension'
+# B.) Supply "*" in "IgnoreFiles", and supply a list of 'AcceptedFiles'.
+#     - This will ignore ALL files, except the files specified within
+#       AcceptedFiles and files that have an authorized Extension.
 
+FirebaseStorage:
+  Meta:
+    Bucket: "**BUCKET_NAME**"
+    StructurePath: "BUCKET_DIRECTORY/PROJECTSTRUCTURE.json"
+  BuildDetails:
+    Name: "*PROJECTNAME*"
+    RootDirectory: "../"
+    SourceDirectory: "*SRC/"
+    IgnoreFiles: ["*FILES_TO_IGNORE*"]
+    AcceptedFiles: ["*LIST OF FILES TO SUPPLY TO SCRIPT, ONLY USED WHEN YOU PAS '*' TO IgnoreFiles"]
+    IgnoreDirs: ["*DIRS_TO_IGNORE*"]
+    FirebaseCredentials: "/*FIREBASE_CREDENTIALs_JSON*"
+    CredentialsPath: "/../*CREDENTIALS_DIRECTORY*"
+    BucketName: "*FIREBASE_STROAGE_BUCKET_NAME"
+    BucketPath: "*FIREBASE_STORAGE_BUCKET_NAME*"
+    Extensions: ["*FILES_YOU_WANT_TO_DEEP_COPY",.js", ".jsx", ".ts", ".css", ".scss"]
+
+
+FirebaseFirestore:
+  Meta:
+    Collection: "*COLLECTION_NAME*"
+    Document: "*DOCUMENT_PROJECTS_INFO_RESIDES_IN"
+    BuildDetails:
+      Description: "*PROJECT_DESCRIPTION*"
+      id: "*PROJECT_ID*"
+      projectName: "*SELD_EXPLAINATORY*"
+      sourceCode: "*GITHUB SOURCE CODE URL*"
+      techIcons: "https://skillicons.dev/Icons?1=tech,that,you,used"
