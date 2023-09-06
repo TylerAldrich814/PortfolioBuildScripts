@@ -18,11 +18,11 @@ FirebaseStorage:
     RootDirectory: "../"
     SourceDirectory: "*SRC/"
     IgnoreFiles: ["*FILES_TO_IGNORE*"]
-    AcceptedFiles: ["*LIST OF FILES TO SUPPLY TO SCRIPT, ONLY USED WHEN YOU PAS '*' TO IgnoreFiles"]
+    AcceptedFiles: ["*LIST OF FILES TO SUPPLY TO SCRIPT, ONLY USED WHEN YOU PASS '*' TO IgnoreFiles"]
     IgnoreDirs: ["*DIRS_TO_IGNORE*"]
-    FirebaseCredentials: "/*FIREBASE_CREDENTIALs_JSON*"
+    FirebaseCredentials: "/*FIREBASE_CREDENTIALS_JSON*"
     CredentialsPath: "/../*CREDENTIALS_DIRECTORY*"
-    BucketName: "*FIREBASE_STROAGE_BUCKET_NAME"
+    BucketName: "*FIREBASE_STORAGE_BUCKET_NAME"
     BucketPath: "*FIREBASE_STORAGE_BUCKET_NAME*"
     Extensions: ["*FILES_YOU_WANT_TO_DEEP_COPY",.js", ".jsx", ".ts", ".css", ".scss"]
 
