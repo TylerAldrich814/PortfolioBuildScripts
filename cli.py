@@ -25,12 +25,6 @@ if __name__ == "__main__":
         ALL = args.all
         TESTING = args.test
 
-        print(f"BUILDTREE = {BUILDTREE}")
-        print(f"DEEPCOPY  = {DEEPCOPY}")
-        print(f"SENDDATA  = {SENDDATA}")
-        print(f"RUNALL    = {ALL}")
-        print(f"TESTING   = {TESTING}")
-
         filePath  = os.path.dirname(os.path.abspath(__file__))
         yamlFile ="/projectSettings.yaml"
         settingsYamlFile = filePath + yamlFile
