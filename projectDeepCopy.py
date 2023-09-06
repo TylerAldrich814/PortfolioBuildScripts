@@ -22,12 +22,21 @@ def copy_source_to_bucket(config, firebase):
                 continue;
 
             local_file_path = os.path.join(root, file)
-            childPath = local_file_path.split(config.SourceDir)[1]
+            if config.SourceDir:
+                childPath = local_file_path.split(config.SourceDir)[1]
+            else:
+                childPath = local_file_path.split("/../")[1]
             bucket_path = storage_path + childPath
 
-            logging.info(" --> BEFORE upload_file_to_bucket")
-            firebase.upload_file_to_bucket(
-                bucket_path=bucket_path,
-                file_path=local_file_path,
-            )
-            logging.info(f" --> {bucket_path} has been uploaded to Firebase Storage")
+            if config.TESTING:
+                print( " -->  || CopySourceToBucket || <--")
+                print(f" -->     ChildPath: {childPath}")
+                print(f" -->    BucketPath: {bucket_path}")
+                print(f" -->     LocalPath: {local_file_path}")
+            else:
+                logging.info(" --> BEFORE upload_file_to_bucket")
+                firebase.upload_file_to_bucket(
+                    bucket_path=bucket_path,
+                    file_path=local_file_path,
+                )
+                logging.info(f" --> {bucket_path} has been uploaded to Firebase Storage")

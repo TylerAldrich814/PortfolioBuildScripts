@@ -3,7 +3,9 @@ import logging
 from yamlLoader import get_yaml_section
 
 class ProjectConfig:
-    def __init__(self, file_path):
+    def __init__(self, file_path, TESTING=False):
+        self.TESTING = TESTING
+
         self.FirebaseStorage = "FirebaseStorage"
         self.FirebaseFirestore = "FirebaseFirestore"
 
@@ -27,7 +29,8 @@ class ProjectConfig:
         self.Extensions = details['Extensions']
         self.OnlyAcceptedFiles = False
 
-        if len(self.AcceptedFiles) != 0 and self.IgnoredFiles[0] != "*":
+        print(f"len(AcceptedFiles) = {len(self.AcceptedFiles)}")
+        if ( len(self.AcceptedFiles) != 0 ) and self.IgnoredFiles[0] != "*":
             raise ValueError("If you've added files to 'AcceptedFiles', then you must only add '*' to IgnoredFiles.");
         elif len(self.AcceptedFiles) != 0 and self.IgnoredFiles[0] == "*":
             self.OnlyAcceptedFiles = True
@@ -44,7 +47,7 @@ class ProjectConfig:
         if self.OnlyAcceptedFiles:
             if file in self.AcceptedFiles:
                 return file
-        elif file not in config.IgnoredFiles:
+        elif file not in self.IgnoredFiles:
             return file
 
 

@@ -56,13 +56,20 @@ def build_and_upload_directory_tree(config, bucket):
             test_extracted_files(structure)
 
         extraction =  {config.SourceDir[:-1]: structure}
-        return json.dumps(extraction, indent=2)
+        if config.TESTING:
+            return extraction
+        else:
+            return json.dumps(extraction, indent=2)
 
 
     sourceDir = config.RootDir + config.SourceDir
     logging.info(f" --> SourceDirectory => {sourceDir}")
     fileStructure = extract_project_structure(config.CompleteSrcDir)
-
     storage_path = f"{config.Bucket}/{config.Name.lower()}/{config.StructurePath}"
-    bucket.upload_string_to_bucket(storage_path, fileStructure)
-    bucket.generate_signed_url(storage_path)
+
+    if config.TESTING:
+        print(f" -->   StoragePath: {storage_path}")
+        print(f" --> FileStructure: {fileStructure}")
+    else:
+        bucket.upload_string_to_bucket(storage_path, fileStructure)
+        bucket.generate_signed_url(storage_path)

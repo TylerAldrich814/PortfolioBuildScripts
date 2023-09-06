@@ -60,9 +60,15 @@ class Firebase():
             else:
                 func()
         except NotFound as e:
-            logging.error(f" --> !Bucket path({bucket_path}) or blob not found: {e}")
+            if bucket_path is not None:
+                logging.error(f" --> !Bucket path({bucket_path}) or blob not found: {e}")
+            else:
+                logging.error(f" --> !Firebase Firestore error occured, Not Found: {e}")
         except Forbidden as e:
-            logging.error(f" --> !Insufficient permissions to upload to bucket: {e}")
+            if bucket_path is not None:
+                logging.error(f" --> !Insufficient permissions to upload to bucket: {e}")
+            else:
+                logging.error(f" --> !Insufficient permissions to upload to Firestore: {e}")
         except GoogleCloudError as e:
             logging.error(f" --> !An error occurred with Google Cloud Storage: {e}")
         except Exception as e:
