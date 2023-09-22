@@ -31,9 +31,9 @@ FirebaseFirestore:
   Meta:
     Collection: "*COLLECTION_NAME*"
     Document: "*DOCUMENT_PROJECTS_INFO_RESIDES_IN"
-    BuildDetails:
-      Description: "*PROJECT_DESCRIPTION*"
-      id: "*PROJECT_ID*"
-      projectName: "*SELD_EXPLAINATORY*"
-      sourceCode: "*GITHUB SOURCE CODE URL*"
-      techIcons: "https://skillicons.dev/Icons?1=tech,that,you,used"
+  BuildDetails:
+    Description: "*PROJECT_DESCRIPTION*"
+    id: "*PROJECT_ID*"
+    projectName: "*SELF_EXPLANATORY*"
+    sourceCode: "*GITHUB SOURCE CODE URL*"
+    techIcons: "https://skillicons.dev/Icons?1=tech,that,you,used"
